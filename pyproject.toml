@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [project.urls]
-License = "https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/LICENSE.md"
+License = "https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/LICENSE.md"
 "Bug Tracker" = "https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/issues"
 Documentation = "https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/"
 Repository = "https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu.git"

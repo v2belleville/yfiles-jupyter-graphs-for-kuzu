@@ -1,5 +1,5 @@
 # yFiles Jupyter Graphs for Kuzu
-![A screenshot showing the yFiles graph widget for Kuzu in a jupyter lab notebook](https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/main/images/example.png)
+![A screenshot showing the yFiles graph widget for Kuzu in a jupyter lab notebook](https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/kuzu/images/example.png)
 
 [![PyPI version](https://badge.fury.io/py/yfiles-jupyter-graphs-for-kuzu.svg)](https://badge.fury.io/py/yfiles-jupyter-graphs-for-kuzu)
 
@@ -14,7 +14,7 @@ Just install it from the [Python Package Index](https://pypi.org/project/yfiles-
 ```bash
 pip install yfiles_jupyter_graphs_for_kuzu
 ```
-or see [README_DEV.md](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/README_DEV.md) to build it yourself.
+or see [README_DEV.md](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/README_DEV.md) to build it yourself.
 
 ## Usage
 
@@ -33,7 +33,7 @@ g.show_cypher("MATCH (s)-[r]->(t) RETURN s,r,t LIMIT 20")
 ```
 
 See
-the [basic example notebook](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/basic_example.ipynb)
+the [basic example notebook](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/basic_example.ipynb)
 for a running example.
 
 ## Supported Environments
@@ -75,7 +75,7 @@ The main class `KuzuGraphWidget` provides the following API:
         - `orthogonal_edge_router`
         - `organic_edge_router`
     - `**kwargs (Dict[str, Any])`: Additional parameters that should be passed to the Cypher query (e.g., see
-      the [selection example](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/selection_example.ipynb)).
+      the [selection example](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/selection_example.ipynb)).
 
 The default behavior is to only show the nodes and relationships returned by the Cypher query.
 
@@ -101,7 +101,7 @@ functions:
         - `type`: Defines a specific "type" for the node as described
           in [yFiles Graphs for Jupyter](https://yworks.github.io/yfiles-jupyter-graphs/02_graph_widget/#def-default_node_type_mappingindex-node)
           which affects the automatic positioning of nodes (same "type"s are preferred to be placed next to each other).
-        - `parent_configuration`: Configure grouping for this node label. See [grouping.ipynb](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/grouping.ipynb)
+        - `parent_configuration`: Configure grouping for this node label. See [grouping.ipynb](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/grouping.ipynb)
           for examples.
 
 - `add_relationship_configuration(type: Union[str, list[str]], **kwargs: Dict[str, Any]) -> None`
@@ -125,7 +125,7 @@ To remove a configuration use the following functions:
 
 You can select nodes and relationships to retrieve their ids. For example, you can use these ids in new Cypher queries
 by providing them as parameter to `show_cypher` as shown in
-the [selection example](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/selection_example.ipynb).
+the [selection example](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/selection_example.ipynb).
 
 - `get_selected_node_ids(widget: Optional[Type["KuzuGraphWidget"]] = None) -> List[str]`: Returns an Array of node ids
     - `widget`: The widget that is used to select nodes from. If `None` is specified, the most recently shown widget is
@@ -167,16 +167,16 @@ the [example notebooks](https://github.com/yWorks/yfiles-jupyter-graphs/blob/mai
 
 <table>
     <tr>
-        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/heat_feature.png" title="Heatmap visualization" alt="Heatmap visualization"></a>
-        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb">Heatmap visualization</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
-        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/map_feature.png" title="Geospatial data visualization" alt="Geospatial data visualization"></a>
-        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb">Geospatial data visualization</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
+        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/heat_feature.png" title="Heatmap visualization" alt="Heatmap visualization"></a>
+        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb">Heatmap visualization</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
+        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/map_feature.png" title="Geospatial data visualization" alt="Geospatial data visualization"></a>
+        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb">Geospatial data visualization</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
     </tr>
     <tr>
-        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/size_feature.png" title="Data-driven item visualization" alt="Data-driven item visualization"></a>
-        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb">Data-driven item visualization</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/feature_example.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
-        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/grouping.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/grouping_feature.png" title="Grouped items" alt="node nesting"></a>
-        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/grouping.ipynb">Group items</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/examples/grouping.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
+        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/size_feature.png" title="Data-driven item visualization" alt="Data-driven item visualization"></a>
+        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb">Data-driven item visualization</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/feature_example.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
+        <td><a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/grouping.ipynb"><img src="https://raw.githubusercontent.com/yWorks/yfiles-jupyter-graphs-for-kuzu/refs/heads/main/images/features/grouping_feature.png" title="Grouped items" alt="node nesting"></a>
+        <a href="https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/grouping.ipynb">Group items</a><br><a target="_blank" href="https://colab.research.google.com/github/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/examples/grouping.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></td>
     </tr>
 </table>
 
@@ -185,7 +185,7 @@ For a detailed feature guide, check out the main widget [example notebooks](http
 ## Code of Conduct
 
 This project and everyone participating in it is governed by
-the [Code of Conduct](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/CODE_OF_CONDUCT.md).
+the [Code of Conduct](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code.
 Please report unacceptable behavior to [contact@yworks.com](mailto:contact@yworks.com).
 
@@ -206,4 +206,4 @@ See [issues](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/issues).
 * [yFiles Graphs for Jupyter](https://github.com/yWorks/yfiles-jupyter-graphs)
 
 ## License
-See [LICENSE](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/main/LICENSE.md) file.
+See [LICENSE](https://github.com/yWorks/yfiles-jupyter-graphs-for-kuzu/blob/kuzu/LICENSE.md) file.
