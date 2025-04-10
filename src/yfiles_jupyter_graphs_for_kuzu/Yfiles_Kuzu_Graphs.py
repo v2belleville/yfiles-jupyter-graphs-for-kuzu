@@ -149,6 +149,23 @@ class KuzuGraphWidget:
 
                     relationship_map[encode_rel_id(value)] = value
 
+                # Process recursive relationships and their associated nodes
+                elif isinstance(value, dict) and "_nodes" in value and "_rels" in value:
+                    recursive_nodes = value["_nodes"]
+                    for node in recursive_nodes:
+                        _id = node["_id"]
+                        node_map[(_id["table"], _id["offset"])] = node
+                        table_to_label_dict[_id["table"]] = node["_label"]
+
+                    recursive_rels = value["_rels"]
+                    for rel in recursive_rels:
+                        # Remove None values from the relationship
+                        for key in list(rel.keys()):
+                            if rel[key] is None:
+                                del rel[key]
+
+                        relationship_map[encode_rel_id(rel)] = rel
+
         # Convert nodes to the result format
         result_nodes = []
         for node in node_map.values():
