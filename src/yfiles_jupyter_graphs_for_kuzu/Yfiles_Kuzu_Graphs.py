@@ -4,7 +4,6 @@ The main KuzuGraphWidget class is defined in this module.
 
 """
 from typing import Any, Callable, Dict, Union, Optional, List, Tuple
-from types import FunctionType, MethodType
 import inspect
 from datetime import date, datetime
 
