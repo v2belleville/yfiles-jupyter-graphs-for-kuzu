@@ -4,7 +4,6 @@ The main KuzuGraphWidget class is defined in this module.
 
 """
 from typing import Any, Callable, Dict, Union, Optional, List, Tuple
-from types import FunctionType, MethodType
 import inspect
 from datetime import date, datetime
 
@@ -135,19 +134,26 @@ class KuzuGraphWidget:
                     continue
 
                 # Process nodes
-                if isinstance(value, dict) and "_label" in value and "_id" in value and not ("_src" in value and "_dst" in value):
-                    _id = value["_id"]
-                    node_map[(_id["table"], _id["offset"])] = value
-                    table_to_label_dict[_id["table"]] = value["_label"]
+                if "_label" in value and "_id" in value and not ("_src" in value and "_dst" in value):
+                    self._process_node(value, node_map, table_to_label_dict)
 
                 # Process relationships
-                elif isinstance(value, dict) and "_label" in value and "_src" in value and "_dst" in value:
+                elif "_label" in value and "_src" in value and "_dst" in value:
                     # Remove None values from the relationship
-                    for key in list(value.keys()):
-                        if value[key] is None:
-                            del value[key]
-
+                    self._remove_none_values(value)
                     relationship_map[encode_rel_id(value)] = value
+
+                # Process recursive relationships and their associated nodes
+                elif "_nodes" in value and "_rels" in value:
+                    recursive_nodes = value["_nodes"]
+                    for node in recursive_nodes:
+                        self._process_node(node, node_map, table_to_label_dict)
+
+                    recursive_rels = value["_rels"]
+                    for rel in recursive_rels:
+                        # Remove None values from the relationship
+                        self._remove_none_values(rel)
+                        relationship_map[encode_rel_id(rel)] = rel
 
         # Convert nodes to the result format
         result_nodes = []
@@ -208,6 +214,34 @@ class KuzuGraphWidget:
             })
 
         return result_nodes, result_relationships
+
+    def _process_node(self,
+            node: Dict[str, Any],
+            node_map: Dict[Tuple[int, int], Dict[str, Any]], 
+            table_to_label_dict: Dict[int, str]
+        ) -> None:
+        """
+        Update the node map and table-to-label dict.
+        
+        Args:
+            node: The node to process
+            node_map: The map to store nodes in
+            table_to_label_dict: The dict mapping table IDs to labels
+        """
+        _id = node["_id"]
+        node_map[(_id["table"], _id["offset"])] = node
+        table_to_label_dict[_id["table"]] = node["_label"]
+        
+    def _remove_none_values(self, dictionary: Dict[str, Any]) -> None:
+        """
+        Remove a `None` key's values from a dict.
+        
+        Args:
+            dict: The dict whose None keys need cleaning
+        """
+        for key in list(dictionary.keys()):
+            if dictionary[key] is None:
+                del dictionary[key]
 
     def _default_color_mapping(self, element: Dict):
         itemtype = element['properties']['label']
