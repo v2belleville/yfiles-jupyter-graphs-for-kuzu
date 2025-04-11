@@ -221,12 +221,12 @@ class KuzuGraphWidget:
             table_to_label_dict: Dict[int, str]
         ) -> None:
         """
-        Process a node and add it to the node map and table to label dictionary.
+        Update the node map and table-to-label dict.
         
         Args:
             node: The node to process
             node_map: The map to store nodes in
-            table_to_label_dict: The dictionary mapping table IDs to labels
+            table_to_label_dict: The dict mapping table IDs to labels
         """
         _id = node["_id"]
         node_map[(_id["table"], _id["offset"])] = node
@@ -234,10 +234,10 @@ class KuzuGraphWidget:
         
     def _remove_none_values(self, dictionary: Dict[str, Any]) -> None:
         """
-        Remove None values from a dictionary.
+        Remove a `None` key's values from a dict.
         
         Args:
-            dictionary: The dictionary to clean
+            dict: The dict whose None keys need cleaning
         """
         for key in list(dictionary.keys()):
             if dictionary[key] is None:
