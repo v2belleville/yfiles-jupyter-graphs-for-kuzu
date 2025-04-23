@@ -52,7 +52,7 @@ class KuzuGraphWidget:
                     - "organic_edge_router"
         """
 
-        self._widget = GraphWidget()
+        self._widget = None
         self._connection = connection
         self._license = license
         self._overview = overview_enabled
@@ -281,6 +281,9 @@ class KuzuGraphWidget:
         if self._connection is not None:
             widget = GraphWidget(overview_enabled=self._overview, context_start_with=self._context_start_with,
                                  widget_layout=self._layout, license=self._license)
+
+            # show directedness of relationships by default
+            widget.directed = True
 
             query_result = self._connection.execute(cypher, **kwargs)
             nodes, edges = self._parse_query_result(query_result)
