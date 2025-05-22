@@ -3,7 +3,7 @@
 
 [![PyPI version](https://badge.fury.io/py/yfiles-jupyter-graphs-for-kuzu.svg)](https://badge.fury.io/py/yfiles-jupyter-graphs-for-kuzu)
 
-Easily visualize a [Kuzu](https://kuzudb.com/) database with as a graph in a Jupyter Notebook.
+Easily visualize a [Kuzu](https://kuzudb.com/) database as a graph in a Jupyter Notebook.
 
 This packages provides an easy-to-use interface to
 the [yFiles Graphs for Jupyter](https://github.com/yWorks/yfiles-jupyter-graphs) widget to directly visualize Cypher
