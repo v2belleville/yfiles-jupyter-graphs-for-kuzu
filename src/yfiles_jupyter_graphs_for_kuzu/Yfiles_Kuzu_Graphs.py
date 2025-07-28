@@ -251,7 +251,7 @@ class KuzuGraphWidget:
         color_index = self._itemtype2colorIdx[itemtype] % len(COLOR_PALETTE)
         return COLOR_PALETTE[color_index]
 
-    def show_cypher(self, cypher: str, layout: Optional[str] = None, **kwargs: Dict[str, Any]) -> None:
+    def show_cypher(self, cypher: str, layout: Optional[str] = None, **kwargs: Dict[str, Any]) -> GraphWidget:
         """
         Displays the given Cypher query as interactive graph.
 
@@ -273,7 +273,7 @@ class KuzuGraphWidget:
             **kwargs (Dict[str, Any]): Additional parameters that should be passed to the Cypher query.
 
         Returns:
-            None
+            The GraphWidget instance that extends the DOMWidget of ipywidgets.
 
         Raises:
             Exception: If no driver was specified.
@@ -304,6 +304,7 @@ class KuzuGraphWidget:
 
             self._widget = widget
             widget.show()
+            return widget
         else:
             raise Exception("no driver specified")
 
