@@ -53,7 +53,12 @@ class KuzuGraphWidget:
                     - "organic_edge_router"
         """
 
+        # Holds the most recent Kuzu query result from show_cypher(); None until first call
+        self._query_result = None
+
+        # Holds the most recent GraphWidget from show_cypher(); None until first call
         self._widget = None
+
         self._connection = connection
         self._license = license
         self._overview = overview_enabled
@@ -119,6 +124,13 @@ class KuzuGraphWidget:
         Returns the most recent GraphWidget created by show_cypher(), or None if show_cypher() has not been called yet.
         """
         return self._widget
+
+    @property
+    def query_result(self) -> Optional[Any]:
+        """
+        The most recent Kuzu query result produced by show_cypher(), or None if show_cypher() has not been called yet.
+        """
+        return self._query_result
 
     def _parse_query_result(self, query_result: Any) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
         """
@@ -316,8 +328,8 @@ class KuzuGraphWidget:
             # show directedness of relationships by default
             widget.directed = True
 
-            query_result = self._connection.execute(cypher, **kwargs)
-            nodes, edges = self._parse_query_result(query_result)
+            self._query_result = self._connection.execute(cypher, **kwargs)
+            nodes, edges = self._parse_query_result(self._query_result)
             widget.nodes = nodes
             widget.edges = edges
 
