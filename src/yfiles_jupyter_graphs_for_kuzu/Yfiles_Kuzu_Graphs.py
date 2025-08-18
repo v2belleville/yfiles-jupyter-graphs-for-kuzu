@@ -7,6 +7,7 @@ from typing import Any, Callable, Dict, Union, Optional, List, Tuple
 import inspect
 from datetime import date, datetime
 import warnings
+import logging
 
 from yfiles_jupyter_graphs import GraphWidget
 
@@ -329,7 +330,12 @@ class KuzuGraphWidget:
             widget.directed = True
 
             self._query_result = self._connection.execute(cypher, **kwargs)
-            nodes, edges = self._parse_query_result(self._query_result)
+            try:
+                nodes, edges = self._parse_query_result(self._query_result)
+            except Exception as e:
+                logging.warning(f"KuzuGraphWidget: Cannot display interactive graph visualization. Ensure that the query returns nodes and relationships.\nRoot Cause: {e}")
+                return
+
             widget.nodes = nodes
             widget.edges = edges
 
